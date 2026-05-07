@@ -9,6 +9,7 @@ import {
   Sun, Moon,
 } from 'lucide-react';
 
+
 // ── Inline SVG Icons ──────────────────────────────────────────────────────────
 const GithubIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -28,6 +29,8 @@ import smartBonusImg from './assets/smar_bouns.png';
 import depiCert from './assets/Depi.png';
 import coreCert from './assets/Core.png';
 import humavolveImg from './assets/huma_volve.jpg';
+import habiSpaceImg from './assets/habispace.png'; // تأكد من اسم الملف وصيغته
+import groceryNewImg from './assets/grocery_new.png'; // الصورة الجديدة للمتجر
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const CONTACT = {
@@ -69,6 +72,21 @@ const TIMELINE = [
 
 const PROJECTS = [
   {
+    title: 'HabiSpace',
+    desc:  'A sophisticated real estate application that combines modern user interfaces with 3D display features.',
+    tech: ['Flutter', '3D Engine', 'Clean Arch'],
+    githubUrl: 'https://github.com/apdo2005/HabiSpace', // ضع رابط المستودع الخاص بك هنا
+    image: habiSpaceImg,
+  },
+   {
+    title: 'Grocery E-commerce',
+    desc: 'High-performance retail storefront tuned for real-world traffic.',
+    tech: ['Flutter', 'Performance', 'UX'],
+    githubUrl: 'https://github.com/Elfouly282/grocery2',
+    image:  groceryNewImg,
+  },
+
+  {
     title: 'LabLink',
     desc: 'Patient-lab digital platform with multi-role workflows and secure scheduling.',
     tech: ['Flutter', 'Firebase', 'Clean Arch'],
@@ -89,13 +107,7 @@ const PROJECTS = [
     githubUrl: 'https://github.com/apdo2005/Spider-Man-app',
     image: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=900&auto=format&fit=crop&q=60',
   },
-  {
-    title: 'Grocery E-commerce',
-    desc: 'High-performance retail storefront tuned for real-world traffic.',
-    tech: ['Flutter', 'Performance', 'UX'],
-    githubUrl: 'https://github.com/Elfouly282/grocery2',
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&auto=format&fit=crop&q=60',
-  },
+ 
 ];
 
 // ── useTypewriter ─────────────────────────────────────────────────────────────
