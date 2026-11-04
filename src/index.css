@@ -1,46 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --neon-purple: #bc13fe;
-  --neon-blue: #22d3ee;
-  --bg: #050505;
+  --obsidian-deep: #030508;
+  --obsidian-surface: #070a10;
+  --obsidian-elevated: #0c101a;
+  --obsidian-border: rgba(240, 244, 248, 0.08);
+
+  --vermilion: #ff2a2a;
+  --vermilion-glow: rgba(255, 42, 42, 0.4);
+
+  --chartreuse: #d4ff00;
+  --chartreuse-glow: rgba(212, 255, 0, 0.35);
+
+  --pearl: #f2f5fa;
+  --pearl-muted: #94a3b8;
+
+  --petrol-deep: #06161f;
+  --petrol-surface: #0a222e;
+
+  --copper: #c87d55;
+  --copper-glow: rgba(200, 125, 85, 0.3);
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--obsidian-deep);
+  color: var(--pearl);
+}
 
 body {
-  background-color: var(--bg);
-  color: #fff;
-  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--obsidian-deep);
+  color: var(--pearl);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Monospace utility */
-.font-mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+/* Artistic Headings */
+.font-display {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
+}
 
-/* Display / title font */
-.font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+}
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #050505; }
-::-webkit-scrollbar-thumb { background: #bc13fe44; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #bc13fe88; }
+/* Monospace & HUD */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.01em;
+}
+
+/* Futuristic Micro HUD Typography */
+.font-hud {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.6875rem;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #030508;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 255, 0, 0.25);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chartreuse);
+}
 
 /* Section scroll offset */
-section[id] { scroll-margin-top: 5rem; }
-
-/* Skill bar glow */
-.skill-glow { box-shadow: 0 0 12px rgba(34, 211, 238, 0.4); }
-
-/* Hide scrollbar utility */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+section[id] {
+  scroll-margin-top: 4rem;
+}
 
 /* Selection */
-::selection { background: rgba(188, 19, 254, 0.3); color: #fff; }
+::selection {
+  background: rgba(255, 42, 42, 0.35);
+  color: #ffffff;
+}
+
+/* Glass & Dimensional Surface styles */
+.obsidian-panel {
+  background: rgba(7, 10, 16, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(240, 244, 248, 0.08);
+}
+
+.obsidian-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.obsidian-panel-hover:hover {
+  background: rgba(12, 16, 26, 0.85);
+  border-color: rgba(212, 255, 0, 0.35);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(212, 255, 0, 0.12);
+}
+
+/* Vermilion Signal Glow */
+.glow-vermilion {
+  box-shadow: 0 0 30px rgba(255, 42, 42, 0.3);
+}
+
+/* Chartreuse Signal Glow */
+.glow-chartreuse {
+  box-shadow: 0 0 30px rgba(212, 255, 0, 0.25);
+}
+
+/* Copper Signal Glow */
+.glow-copper {
+  box-shadow: 0 0 30px rgba(200, 125, 85, 0.25);
+}
+
+/* Scanline Matrix Overlay */
+.scanline-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Prevent layout shifts */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform;
+}
