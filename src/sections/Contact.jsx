@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { profile } from '../data';
 import portrait from '../assets/portrait.webp';
-import { scrollToId } from './scroll';
+import { InlineLike } from './LikeButton';
+import { originFrom, warpTo } from './warp';
 import { ArrowUpRight, FadeUp, Magnetic, RevealText } from './ui';
 
 function CairoClock() {
@@ -80,7 +81,11 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
+        <div className="mt-20">
+          <InlineLike />
+        </div>
+
+        <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
           {socials.map((s) => (
             <a
               key={s.label}
@@ -104,7 +109,7 @@ export default function Contact() {
       <footer className="mx-auto flex max-w-[1400px] flex-col gap-4 border-t border-line px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="font-mono text-xs uppercase tracking-widest"><CairoClock /></span>
-        <button onClick={() => scrollToId('top')} className="link-underline self-start text-fg sm:self-auto">
+        <button onClick={(e) => warpTo('top', originFrom(e))} className="link-underline self-start text-fg sm:self-auto">
           Back to top ↑
         </button>
       </footer>

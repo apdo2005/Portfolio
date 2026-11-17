@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { navLinks, profile } from '../data';
-import { scrollToId, lenisRef } from './scroll';
+import { lenisRef } from './scroll';
+import { originFrom, warpTo } from './warp';
 import { Magnetic } from './ui';
 import { ease } from './ease';
 
@@ -25,10 +26,10 @@ export default function Navbar({ ready }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  const go = (id) => {
+  const go = (id, e) => {
     setOpen(false);
-    // let the menu close before scrolling
-    setTimeout(() => scrollToId(id), open ? 350 : 0);
+
+    warpTo(id, originFrom(e));
   };
 
   return (
@@ -40,14 +41,14 @@ export default function Navbar({ ready }) {
         transition={{ duration: 0.6, ease }}
       >
         <div className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 sm:px-8 transition-[padding] duration-500 ${scrolled ? 'py-3' : 'py-5'}`}>
-          <button onClick={() => go('top')} className="group flex items-center gap-2 text-base font-semibold tracking-tight" aria-label="Back to top">
+          <button onClick={(e) => go('top', e)} className="group flex items-center gap-2 text-base font-semibold tracking-tight" aria-label="Back to top">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-fg text-bg text-sm font-bold transition-transform duration-500 group-hover:rotate-[360deg]">A</span>
             <span className="hidden sm:inline">{profile.short}<sup className="text-[10px] text-muted">©</sup></span>
           </button>
 
           <nav className={`hidden md:flex items-center gap-1 rounded-full border border-line px-2 py-1.5 backdrop-blur-xl transition-colors duration-500 ${scrolled ? 'bg-surface/80' : 'bg-transparent'}`}>
             {navLinks.map((l) => (
-              <button key={l.id} onClick={() => go(l.id)} className="rounded-full px-4 py-1.5 text-sm text-muted transition-colors hover:bg-white/5 hover:text-fg">
+              <button key={l.id} onClick={(e) => go(l.id, e)} className="rounded-full px-4 py-1.5 text-sm text-muted transition-colors hover:bg-white/5 hover:text-fg">
                 {l.label}
               </button>
             ))}
@@ -87,7 +88,7 @@ export default function Navbar({ ready }) {
                 {navLinks.map((l, i) => (
                   <li key={l.id} className="overflow-hidden">
                     <motion.button
-                      onClick={() => go(l.id)}
+                      onClick={(e) => go(l.id, e)}
                       className="text-5xl font-medium tracking-tight"
                       initial={{ y: '100%' }}
                       animate={{ y: 0 }}

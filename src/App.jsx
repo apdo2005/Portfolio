@@ -13,6 +13,10 @@ import Work from './sections/Work';
 import Experience from './sections/Experience';
 import Certificates from './sections/Certificates';
 import Contact from './sections/Contact';
+import { FloatingLike } from './sections/LikeButton';
+import NextSection from './sections/NextSection';
+import SectionDots from './sections/SectionDots';
+import WarpOverlay from './sections/WarpOverlay';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -59,13 +63,23 @@ export default function App() {
       <main>
         <Hero ready={ready} />
         <Marquee />
+        {/* desktop uses the hero's scroll cue; phones get an explicit next link */}
+        <NextSection from="top" className="pt-12 md:hidden" />
         <About />
+        <NextSection from="about" className="-mt-8 pb-8 sm:-mt-16" />
         <Services />
+        <NextSection from="services" className="-mt-4 pb-8 sm:-mt-8" />
         <Work />
+        <NextSection from="work" className="pt-16 pb-8 sm:pt-24" />
         <Experience />
+        <NextSection from="experience" className="-mt-8 pb-8 sm:-mt-16" />
         <Certificates />
+        <NextSection from="certificates" className="-mt-8 pb-20 sm:-mt-16 sm:pb-28" />
       </main>
       <Contact />
+      {ready && <FloatingLike />}
+      {ready && <SectionDots />}
+      <WarpOverlay />
     </div>
   );
 }

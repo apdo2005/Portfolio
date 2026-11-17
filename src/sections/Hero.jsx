@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import { profile } from '../data';
-import { scrollToId } from './scroll';
+import { originFrom, warpTo } from './warp';
 import { Magnetic, RevealText, ArrowUpRight } from './ui';
 import { ease } from './ease';
 import Portrait from './Portrait';
@@ -81,7 +81,7 @@ export default function Hero({ ready }) {
           <motion.div {...fade(0.85)} className="flex flex-wrap items-center gap-3 md:col-span-6 md:justify-end">
             <Magnetic>
               <button
-                onClick={() => scrollToId('work')}
+                onClick={(e) => warpTo('work', originFrom(e))}
                 className="group flex items-center gap-3 rounded-full bg-fg py-3 pl-6 pr-3 text-sm font-medium text-bg"
               >
                 View my work
@@ -100,7 +100,7 @@ export default function Hero({ ready }) {
       </motion.div>
 
       <motion.button
-        onClick={() => scrollToId('about')}
+        onClick={(e) => warpTo('about', originFrom(e))}
         {...fade(1.1)}
         className="absolute bottom-24 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted md:flex"
         aria-label="Scroll down"

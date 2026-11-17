@@ -20,6 +20,17 @@ export const profile = {
   cv: '/cv.pdf',
 };
 
+// Page order — drives the "next section" links, the side navigator and the warp transitions.
+export const sections = [
+  { id: 'top', label: 'Intro', transition: 'shutter' },
+  { id: 'about', label: 'About me', transition: 'curtain' },
+  { id: 'services', label: 'What I do', transition: 'portal' },
+  { id: 'work', label: 'Selected work', transition: 'blinds' },
+  { id: 'experience', label: 'Experience', transition: 'tiles' },
+  { id: 'certificates', label: 'Recognition', transition: 'slice' },
+  { id: 'contact', label: 'Contact', transition: 'iris' },
+];
+
 export const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },

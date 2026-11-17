@@ -22,7 +22,7 @@ function ScrollParagraph() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] });
   const words = statement.split(' ');
   return (
-    <p ref={ref} className="display-md font-medium" aria-label={statement}>
+    <p ref={ref} className="relative display-md font-medium" aria-label={statement}>
       {words.map((w, i) => (
         <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
           {w}
